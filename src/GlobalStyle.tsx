@@ -2,11 +2,26 @@ import { createGlobalStyle } from "styled-components";
 import { reset } from "styled-reset";
 
 const GlobalStyle = createGlobalStyle`
+
+@font-face {
+    font-family: 'apija';
+    src: url("../src/asset/font/Apija-demo.otf");
+}
+
+@font-face {
+    font-family: 'bebas';
+    src: url("../src/asset/font/BebasNeue-Regular.otf");
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url("../src/asset/font/Roboto-Regular.ttf");
+}
       ${reset}
 
   body {
     box-sizing: border-box;
-    font-family: 'Pretendard-Regular';
+    font-family:'roboto';
   }
 
   button {
