@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import Synopsis from "./pages/Synopsis";
 import Character from "./pages/Character";
 import PageTransition from "./transition/PageTransition";
-import Layout from "./Layout";
+import Layout from "./layout/Layout";
 
 function App() {
   const location = useLocation();

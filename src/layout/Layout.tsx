@@ -6,29 +6,28 @@ import { useMediaQuery } from "react-responsive";
 import netflexLogo from "../src/asset/common/gnb_netflex.png";
 import lpImage from "../src/asset/common/soundtrack.png";
 import nextBtn from "../src/asset/common/next_btn.png";
+import Nav from "../components/Nav";
+import { PageData } from "../mock/menuList";
 
-interface LayoutProps {
+export interface LayoutProps {
   isMobile?: boolean;
+  setShowNav?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Layout = () => {
   const isDesktop = useMediaQuery({ query: "(min-width:800px)" });
   const isMobile = useMediaQuery({ query: "(max-width:799px)" });
   const location = useLocation();
-  const [active, setActive] = useState<boolean>(false);
+  const [showNav, setShowNav] = useState<boolean>(false);
 
   const handleMenu = () => {
-    setActive((prev) => !prev);
+    setShowNav((prev) => !prev);
   };
   const menuList = [1, 2, 3];
-  const PageData = [
-    { page: "home", path: "/" },
-    { page: "synopsis", path: "/synopsis" },
-    { page: "character", path: "/character" },
-  ];
 
   return (
     <>
+      {showNav && <Nav isMobile={isMobile} setShowNav={setShowNav} />}
       <Outlet />
       {isDesktop && (
         <DHeaderLayout>
@@ -40,7 +39,9 @@ const Layout = () => {
           <div>
             <MenuItem onClick={handleMenu}>
               {menuList.map((el, index) => {
-                return <li key={index} className={active ? "active" : ""}></li>;
+                return (
+                  <li key={index} className={showNav ? "active" : ""}></li>
+                );
               })}
             </MenuItem>
           </div>
@@ -62,7 +63,7 @@ const Layout = () => {
         <MHeaderLayout>
           <MenuItem isMobile={isMobile} onClick={handleMenu}>
             {menuList.map((el, index) => {
-              return <li key={index} className={active ? "active" : ""}></li>;
+              return <li key={index} className={showNav ? "active" : ""}></li>;
             })}
           </MenuItem>
         </MHeaderLayout>
@@ -105,13 +106,7 @@ const MenuItem = styled.ul<LayoutProps>`
   display: flex;
   gap: 8px;
   cursor: pointer;
-
-  ${(props) =>
-    props.isMobile &&
-    css`
-      flex-direction: column;
-      margin-left: auto;
-    `}
+  flex-direction: ${(props) => (props.isMobile ? "column" : "row")};
 
   li {
     width: 3px;
@@ -121,9 +116,8 @@ const MenuItem = styled.ul<LayoutProps>`
     ${(props) =>
       props.isMobile &&
       css`
-        width: 40px;
+        width: 36px;
         height: 3px;
-        margin-left: auto;
       `}
   }
 
@@ -177,15 +171,15 @@ const Pagenation = styled.ul`
 // mobile
 
 const MHeaderLayout = styled.header`
-  width: 100%;
+  width: 56px;
   height: 56px;
-  padding: 0 24px;
   box-sizing: border-box;
   position: fixed;
   background-color: rgb(202, 77, 2);
-  z-index: 10;
   display: flex;
   align-items: center;
+  justify-content: center;
+  z-index: 20;
 `;
 
 const SoundImageWrapper = styled.div`
