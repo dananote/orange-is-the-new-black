@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import GlobalStyle from "./GlobalStyle";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Home from "./pages/Home";
+import Synopsis from "./pages/Synopsis";
+import Character from "./pages/Character";
+import PageTransition from "./transition/PageTransition";
+import Layout from "./Layout";
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Layout />
+      <PageTransition transitionKey={location.pathname}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/synopsis" element={<Synopsis />} />
+          <Route path="/character" element={<Character />} />
+        </Routes>
+      </PageTransition>
+    </>
   );
 }
 
