@@ -1,7 +1,7 @@
 import React from "react";
 import { styled, css } from "styled-components";
 import navBg from "../asset/common/menu_bg.png";
-import { LayoutProps } from "../layout/Layout";
+import { LayoutProps } from "../mock/type";
 import { PageData } from "../mock/menuList";
 import { Link } from "react-router-dom";
 
@@ -50,16 +50,10 @@ const NavLayout = styled.article<LayoutProps>`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-image: url(${navBg});
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100% 100vh;
+  background: no-repeat center/ 100% 100vh url(${navBg});
 
   @keyframes menu {
     0% {
-      transform: translateX(-100%);
-    }
-    50% {
       transform: translateX(-100%);
     }
     100% {
