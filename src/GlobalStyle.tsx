@@ -46,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     }
 
+    img {
+      vertical-align: top;
+    }
+
   /* blind */
     .a11y-hidden {
     clip: rect(1px, 1px, 1px, 1px);

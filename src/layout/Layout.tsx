@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 import Nav from "../components/Nav";
 import LayoutPC from "./LayoutPC";
 import LayoutMobile from "./LayoutMobile";
 import { NextBtn, SoundImageWrapper } from "./LayoutStyle";
 import lpImage from "../asset/common/soundtrack.png";
 import { PageData } from "../mock/menuList";
+import { LayoutProps } from "../mock/type";
 
-interface PageType {
-  page: string;
-  path: string;
-}
-
-const Layout = () => {
-  const isDesktop = useMediaQuery({ query: "(min-width:800px)" });
-  const isMobile = useMediaQuery({ query: "(max-width:799px)" });
+const Layout: React.FC<LayoutProps> = ({ isDesktop, isMobile }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showNav, setShowNav] = useState<boolean>(false);

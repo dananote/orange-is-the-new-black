@@ -1,5 +1,6 @@
 export interface LayoutProps {
   isMobile?: boolean;
+  isDesktop?: boolean;
   setShowNav?: React.Dispatch<React.SetStateAction<boolean>>;
   handleMenu?: () => void;
   showNav?: boolean;
