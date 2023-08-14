@@ -3,16 +3,15 @@ import { styled } from "styled-components";
 import { SubTextProps } from "../mock/type";
 
 const SubText: React.FC<SubTextProps> = ({ subText, color }) => {
-  console.log(Boolean(color));
   return (
     <SubTextLayout color={color}>
-      <img src={subText} alt="Bad grils Bad prisons stories" />
+      <img src={subText} alt="subtext" />
       <span></span>
     </SubTextLayout>
   );
 };
 
-const SubTextLayout = styled.div<SubTextProps>`
+const SubTextLayout = styled.section<SubTextProps>`
   width: 100%;
   height: 16px;
   margin-bottom: 24px;

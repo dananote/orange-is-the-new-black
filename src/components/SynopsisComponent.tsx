@@ -71,7 +71,7 @@ const TitleWrap = styled.div<LayoutProps>`
   max-width: 480px;
 
   div {
-    width: 100%;
+    width: ${(props) => (props.isMobile ? "100%" : "480px")};
     overflow: hidden;
     aspect-ratio: 2 / 0.4;
   }

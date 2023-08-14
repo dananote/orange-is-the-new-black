@@ -18,8 +18,8 @@ const PageTransition: React.FC<PageTransitionProps> = ({
           key={transitionKey}
           classNames="slide"
           timeout={timeout}
-          unmountOnExit
-          mountOnEnter
+          // unmountOnExit
+          // mountOnEnter
         >
           <PageTransitionWrapper>{children}</PageTransitionWrapper>
         </CSSTransition>

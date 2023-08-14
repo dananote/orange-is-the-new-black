@@ -24,7 +24,10 @@ function App() {
             element={<Home isDesktop={isDesktop} isMobile={isMobile} />}
           />
           <Route path="/synopsis" element={<Synopsis isMobile={isMobile} />} />
-          <Route path="/character" element={<Character />} />
+          <Route
+            path="/character"
+            element={<Character isMobile={isMobile} isDesktop={isDesktop} />}
+          />
         </Routes>
       </PageTransition>
     </>

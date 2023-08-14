@@ -1,22 +1,23 @@
 import React from "react";
-import { styled, css } from "styled-components";
+import { styled, css, keyframes } from "styled-components";
 import navBg from "../asset/common/menu_bg.png";
 import { LayoutProps } from "../mock/type";
 import { PageData } from "../mock/menuList";
 import { Link } from "react-router-dom";
 
-const Nav: React.FC<LayoutProps> = ({ isMobile, setShowNav }) => {
+const Nav: React.FC<LayoutProps> = ({ isMobile, setShowNav, showNav }) => {
+  const handleNav = () => {
+    if (showNav && setShowNav) {
+      setShowNav(false);
+    }
+  };
   return (
-    <NavDarkBg isMobile={isMobile}>
+    <NavDarkBg isMobile={isMobile} showNav={showNav}>
       <h1 className="a11y-hidden">메뉴창</h1>
-      <NavLayout isMobile={isMobile}>
+      <NavLayout isMobile={isMobile} showNav={showNav}>
         {PageData.map((el, index) => {
           return (
-            <MenuList
-              to={el.path}
-              isMobile={isMobile}
-              onClick={() => setShowNav?.((prev) => !prev)}
-            >
+            <MenuList to={el.path} isMobile={isMobile} onClick={handleNav}>
               <span>0{index + 1}</span>
               <p>{el.page}</p>
             </MenuList>
@@ -28,6 +29,7 @@ const Nav: React.FC<LayoutProps> = ({ isMobile, setShowNav }) => {
 };
 
 const NavDarkBg = styled.div<LayoutProps>`
+  visibility: ${(props) => (props.showNav ? "visible" : "hidden")};
   position: fixed;
   z-index: 20;
   background-color: rgba(0, 0, 0, 0.6);
@@ -51,15 +53,7 @@ const NavLayout = styled.article<LayoutProps>`
   justify-content: center;
   flex-direction: column;
   background: no-repeat center/ 100% 100vh url(${navBg});
-
-  @keyframes menu {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
+  animation: ${(props) => (props.showNav ? oepnNav : closeNav)} 0.5s ease-in-out;
 `;
 
 const MenuList = styled(Link)<LayoutProps>`
@@ -97,5 +91,27 @@ const MenuList = styled(Link)<LayoutProps>`
     }
   }
 `;
+
+const oepnNav = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const closeNav = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-1000px);
+  }
+  `;
 
 export default Nav;

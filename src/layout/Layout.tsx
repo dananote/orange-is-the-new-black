@@ -33,7 +33,7 @@ const Layout: React.FC<LayoutProps> = ({ isDesktop, isMobile }) => {
 
   return (
     <>
-      {showNav && <Nav isMobile={isMobile} setShowNav={setShowNav} />}
+      <Nav isMobile={isMobile} setShowNav={setShowNav} showNav={showNav} />
       <NoiseEffect />
       <Outlet />
       {isDesktop && (

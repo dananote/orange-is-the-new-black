@@ -122,9 +122,9 @@ const PhotoWrap = styled.div<LayoutProps>`
   width: 100%;
   height: 100vh;
 
-  div {
-    width: 320px;
-    height: 320px;
+  & > div {
+    width: 360px;
+    height: 360px;
     position: absolute;
     filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5));
   }
