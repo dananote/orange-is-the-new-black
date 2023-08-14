@@ -5,4 +5,10 @@ export interface LayoutProps {
   handleMenu?: () => void;
   showNav?: boolean;
   location?: string;
+  bgImage?: string;
+}
+
+export interface SubTextProps {
+  subText?: string;
+  color?: string;
 }

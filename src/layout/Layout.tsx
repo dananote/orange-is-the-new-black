@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { styled } from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-// import { useMediaQuery } from "react-responsive";
 import Nav from "../components/Nav";
 import LayoutPC from "./LayoutPC";
 import LayoutMobile from "./LayoutMobile";
@@ -9,6 +9,7 @@ import { NextBtn, SoundImageWrapper } from "./LayoutStyle";
 import lpImage from "../asset/common/soundtrack.png";
 import { PageData } from "../mock/menuList";
 import { LayoutProps } from "../mock/type";
+import noise from "../asset/common/noise.gif";
 
 const Layout: React.FC<LayoutProps> = ({ isDesktop, isMobile }) => {
   const location = useLocation();
@@ -33,6 +34,7 @@ const Layout: React.FC<LayoutProps> = ({ isDesktop, isMobile }) => {
   return (
     <>
       {showNav && <Nav isMobile={isMobile} setShowNav={setShowNav} />}
+      <NoiseEffect />
       <Outlet />
       {isDesktop && (
         <LayoutPC
@@ -55,5 +57,15 @@ const Layout: React.FC<LayoutProps> = ({ isDesktop, isMobile }) => {
     </>
   );
 };
+
+const NoiseEffect = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+  background: no-repeat center/cover url(${noise});
+`;
 
 export default Layout;

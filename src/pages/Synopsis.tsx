@@ -1,11 +1,14 @@
 import React from "react";
+import synopsisBg from "../asset/synopsis/scene02_bg.png";
+import SynopsisComponent from "../components/SynopsisComponent";
+import { LayoutProps } from "../mock/type";
+import { PageBackground } from "../layout/LayoutStyle";
 
-const Synopsis = () => {
+const Synopsis: React.FC<LayoutProps> = ({ isMobile }) => {
   return (
-    <div>
-      <h1>Synopsis</h1>
-      <p>Synopsis</p>
-    </div>
+    <PageBackground bgImage={synopsisBg} isMobile={isMobile}>
+      <SynopsisComponent isMobile={isMobile} />
+    </PageBackground>
   );
 };
 

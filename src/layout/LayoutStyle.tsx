@@ -2,6 +2,41 @@ import { styled, css } from "styled-components";
 import { LayoutProps } from "../mock/type";
 import nextBtn from "../asset/common/next_btn.png";
 
+export const PageBackground = styled.article<LayoutProps>`
+  padding: ${(props) => (props.isMobile ? "80px 40px" : "0 50px 0 150px")};
+
+  box-sizing: border-box;
+  &::after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
+    background: no-repeat center/cover url(${(props) => props.bgImage});
+  }
+
+  & section {
+    width: 100%;
+    display: flex;
+    gap: 5%;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+  }
+
+  ${(props) =>
+    props.isMobile &&
+    css`
+      & section {
+        flex-direction: column;
+        gap: 50px;
+      }
+    `}
+`;
+
 export const MenuItem = styled.ul<LayoutProps>`
   display: flex;
   gap: 8px;

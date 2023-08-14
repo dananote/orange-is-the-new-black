@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GlobalStyle from "./GlobalStyle";
 import { Routes, Route, useLocation } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import Synopsis from "./pages/Synopsis";
 import Character from "./pages/Character";
 import PageTransition from "./transition/PageTransition";
@@ -23,7 +23,7 @@ function App() {
             path="/"
             element={<Home isDesktop={isDesktop} isMobile={isMobile} />}
           />
-          <Route path="/synopsis" element={<Synopsis />} />
+          <Route path="/synopsis" element={<Synopsis isMobile={isMobile} />} />
           <Route path="/character" element={<Character />} />
         </Routes>
       </PageTransition>
